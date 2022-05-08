@@ -79,12 +79,12 @@ class ListNode {
     }
 
     public void dump() {
-        System.out.println(this.toString());
         ListNode node = this;
         while (node != null) {
-            System.out.println(node.val);
+            System.out.printf("%s = %d\n", node.toString(), node.val);
             node = node.next();
         } 
+        System.out.println();
     }
 }
 
