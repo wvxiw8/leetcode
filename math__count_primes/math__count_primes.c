@@ -51,6 +51,7 @@ int countPrimes(int n) {
         return 0;
     }
     
+    // int primes[n];
     int* primes = malloc(n*4);
 
     int i;
