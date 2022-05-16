@@ -30,6 +30,8 @@ Constraints:
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/resource.h>
+#include <errno.h>
 
 /**************************************************************************/
 // Way 1: Sieve of Eratosthenes
@@ -47,17 +49,19 @@ int isPrime(int n) {
 }
 
 int countPrimes(int n) {
-    if (!n) {
+    if (n == 0) {
         return 0;
     }
-    int primes[n];
-    // int* primes = malloc(n*4);
-    int c = 0;
-    for (int i = 2; i < n; ++i)
+    
+    int* primes = malloc(n*4);
+
+    int i;
+    for (i = 2; i < n ; ++i) {
         primes[i] = 1;
+    }
 
 
-    for (int i = 2; i*i < n; ++i) {
+    for (i = 2; i*i < n; ++i) {
         if(isPrime(i)) {
             for (int j = i; j < n; j+=i) {
                 primes[j] = 0;
@@ -66,15 +70,15 @@ int countPrimes(int n) {
         }
     }
 
-    for (int i = 2; i < n; ++i) {
+    int c = 0;
+    for (i = 2; i < n; ++i) {
         if (primes[i] == 1) {
             ++c;
         }
     }
-    
+    free(primes);    
     return c;
 }
-
 /**************************************************************************/
 // Way 2: straight
 int isPrimeOddMoreEq11(int n /* odd and more or equal than 11*/) {
@@ -114,11 +118,13 @@ int countPrimes2(int n /*0 <= n <= 5 * 10^6 */) {
 }
 
 /**************************************************************************/
-int main() {
+int main (int argc, char **argv)
+{
+
     int n[] =  {10, 0, 1, 2, 3, 8, 10000, 499979, 5000000};
     int exp[] = {4, 0, 0, 0, 1, 4,  1229, 41537, 348513}; 
 
-#if 1
+#if 0
     int number = 5000000;
     printf("1: %d\n", countPrimes(number)); 
     printf("2: %d\n", countPrimes2(number));
