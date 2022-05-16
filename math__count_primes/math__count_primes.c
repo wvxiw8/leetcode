@@ -30,8 +30,6 @@ Constraints:
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/resource.h>
-#include <errno.h>
 
 /**************************************************************************/
 // Way 1: Sieve of Eratosthenes
