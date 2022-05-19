@@ -1,10 +1,19 @@
 import java.util.List;
 import java.util.ArrayList;
 
-/*
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/99/others/601/
+
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Pascal's Triangle
+ * @id             118
+ * @Difficulty     Easy
+ * @Tags           other
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/99/others/601/
 
 Pascal's Triangle
+
     Given an integer numRows, return the first numRows of Pascal's triangle.
     In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
 

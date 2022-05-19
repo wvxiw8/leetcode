@@ -1,9 +1,14 @@
 import java.util.HashMap;
 
-import javax.print.attribute.HashPrintJobAttributeSet;
-import javax.xml.crypto.dsig.spec.HMACParameterSpec;
-
-/* https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/549/
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Single Number
+ * @id             136
+ * @Difficulty     Easy
+ * @Tags           array
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/549
 
 Single Number
     Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.

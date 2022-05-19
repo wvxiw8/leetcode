@@ -1,5 +1,12 @@
-/*
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/99/others/722/
+/** 
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Missing Number
+ * @id             268
+ * @Difficulty     Easy
+ * @Tags           math, other
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/99/others/722/
 
 Missing Number
 

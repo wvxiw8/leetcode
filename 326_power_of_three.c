@@ -1,5 +1,13 @@
-/* https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/745/
-
+/** 
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Power of Three
+ * @id             326
+ * @Difficulty     Easy
+ * @Tags           math
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/745/
+ 
 Power of Three
 
     Given an integer n, return true if it is a power of three. Otherwise, return false.

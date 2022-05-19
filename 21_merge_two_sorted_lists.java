@@ -1,6 +1,12 @@
-/* 
-
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/771/
+/** 
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Merge Two Sorted Lists
+ * @id             21
+ * @Difficulty     Easy
+ * @Tags           linked list
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/771/
 
 Merge Two Sorted Lists
 
@@ -128,7 +134,7 @@ class Solution {
 }
 
 
-public class MergeTwoSortedLists {
+class MergeTwoSortedLists {
     public static void main(String[] args) {
         int[] list1 = {1,2,3}; int[] list2 = {1,3,4};
         

@@ -3,7 +3,15 @@ import java.util.HashMap;
 import javax.print.attribute.HashPrintJobAttributeSet;
 import javax.xml.crypto.dsig.spec.HMACParameterSpec;
 
-/* https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/546/
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Two Sum
+ * @id             204
+ * @Difficulty     Easy
+ * @Tags           array
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/546/
 
 Two Sum
 

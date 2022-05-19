@@ -1,6 +1,12 @@
-/* 
-
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/884/
+/** 
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           atoi
+ * @id             8
+ * @Difficulty     Easy
+ * @Tags           strings
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/884/
 
 String to Integer (atoi)
 

@@ -1,5 +1,12 @@
-/* 
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/99/others/721/
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Valid Parentheses
+ * @id             20
+ * @Difficulty     Easy
+ * @Tags           other
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/99/others/721/
 
 Valid Parentheses
 

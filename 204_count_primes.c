@@ -1,4 +1,12 @@
-/* https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/744/
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Count Primes
+ * @id             204
+ * @Difficulty     Easy
+ * @Tags           math
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/744/
 
 Count Primes
 

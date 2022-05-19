@@ -1,8 +1,14 @@
 import java.util.HashSet;
 
-/* 
-
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/773/
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Linked List Cycle
+ * @id             141
+ * @Difficulty     Easy
+ * @Tags           linked list
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/773/
 
 Linked List Cycle
 
@@ -166,7 +172,7 @@ class Solution {
 }
 
 
-public class LinkedListCycle {
+class LinkedListCycle {
     public static void main(String[] args) {
         // int [] head = {3,2,0,-4}; int pos = 1;
         // int [] head = {1,2}; int pos = 0;

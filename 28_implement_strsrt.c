@@ -1,8 +1,14 @@
-/* 
+/** 
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Implement strStr()
+ * @id             28
+ * @Difficulty     Easy
+ * @Tags           string
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/885/
 
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/885/
-
-Implement strStr().
+Implement strStr()
 
     Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
 

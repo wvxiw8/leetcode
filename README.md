@@ -1,1 +1,1 @@
-# Solved tasks form leetcode
+# Solved tasks from leetcode

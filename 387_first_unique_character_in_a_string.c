@@ -1,4 +1,12 @@
-/* 
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           First Unique Character in a String
+ * @id             387
+ * @Difficulty     Easy
+ * @Tags           strings
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/featured/card/top-interview-questions-easy/127/strings/881/
 
 First Unique Character in a String
 

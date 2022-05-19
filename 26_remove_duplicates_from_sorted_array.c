@@ -1,3 +1,14 @@
+/** 
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Remove duplicates from sorted array
+ * @id             26
+ * @Difficulty     Easy
+ * @Tags           array
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/featured/card/top-interview-questions-easy/92/array/727/
+ */
+  
 #include <stdio.h>
 int removeDuplicates(int* nums, int numsSize){
     int* in = nums;

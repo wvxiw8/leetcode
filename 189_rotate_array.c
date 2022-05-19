@@ -1,5 +1,13 @@
-/* https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/646/
-
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Rotate Array
+ * @id             189
+ * @Difficulty     Easy
+ * @Tags           array, math
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/646/
+ 
 Rotate Array
     Given an array, rotate the array to the right by k steps, where k is non-negative.
 

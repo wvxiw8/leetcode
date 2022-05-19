@@ -1,9 +1,16 @@
-/*
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/99/others/648/
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Reverse Bits
+ * @id             190
+ * @Difficulty     Easy
+ * @Tags           other
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/99/others/648/
 
 Reverse Bits
 
-Reverse bits of a given 32 bits unsigned integer.
+    Reverse bits of a given 32 bits unsigned integer.
 
 Note:
 

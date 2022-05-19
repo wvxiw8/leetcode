@@ -1,5 +1,12 @@
-/* 
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/560/
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Reverse Linked List
+ * @id             206
+ * @Difficulty     Easy
+ * @Tags           linked list
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/560/
 
 Reverse Linked List
 
@@ -125,7 +132,7 @@ class Solution {
 }
 
 
-public class ReverseLinkedList {
+class ReverseLinkedList {
     public static void main(String[] args) {
         int[] in = {2,3,4,5,6}; int[] out = {6,5,4,3,2};
         // int[] in = {1,2}; int[] out = {2,1};

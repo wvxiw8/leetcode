@@ -1,4 +1,12 @@
-/* https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/674/
+/** 
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Intersection of Two Arrays II
+ * @id             350
+ * @Difficulty     Easy
+ * @Tags           array
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/674/
 
 Intersection of Two Arrays II
     Given two integer arrays nums1 and nums2, return an array of their intersection. 

@@ -1,6 +1,12 @@
-/* 
-
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/879/
+/** 
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Reverse String
+ * @id             344
+ * @Difficulty     Easy
+ * @Tags           string
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/879/
 
 Reverse String
 

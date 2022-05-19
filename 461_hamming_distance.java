@@ -1,8 +1,15 @@
 import java.util.List;
 import java.util.ArrayList;
 
-/*
-https://leetcode.com/explore/interview/card/top-interview-questions-easy/99/others/762/
+/**
+ * @Author         wvxiw
+ * @Title          Leetcode task
+ * @Task           Hamming Distance
+ * @id             461
+ * @Difficulty     Easy
+ * @Tags           other
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/99/others/762/
 
 Hamming Distance
 
