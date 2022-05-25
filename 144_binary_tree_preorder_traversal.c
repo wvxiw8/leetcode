@@ -58,30 +58,25 @@ struct TreeNode {
 
 struct treeTraverser {
     int* result;
-    int bufSize; /* size of allocated <result> buffer (in ints) */
-    int resSize; /* number of node values put to <result> */
+    char bufSize; /* size of allocated <result> buffer (in ints) */
+    char resSize; /* number of node values put to <result> */
 };
 
 
 void traverseNode(struct TreeNode* node, struct treeTraverser* t) {
     if (!node) 
         return; 
-        
-    if (t->bufSize  <= (t->resSize + 1)) {
-        t->bufSize <<= 1;
-        t->result = realloc(t->result, t->bufSize * sizeof(int)); /* assume always ok */
-    }
     t->result[t->resSize++] = node->val;
     traverseNode(node->left, t);
     traverseNode(node->right, t);
 }
-
 
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int* preorderTraversal(struct TreeNode* root, int* returnSize) {
     struct treeTraverser t = {.result = NULL, .bufSize = 1, .resSize = 0};
+    t.result = malloc(100 * sizeof(int)); 
     traverseNode(root, &t);
     *returnSize = t.resSize;
     return t.result;
@@ -137,7 +132,7 @@ int main() {
     result = preorderTraversal(&root, &returnSize);
     printf("[returnSize]=%d\n", returnSize); for (int i = 0; i < returnSize; i++) { printf("%d ", *result++); } printf("\n");
     
-    // if (result) free(result); //* Note that get munmap_chunk(): invalid pointer Aborted (core dumped) here" */
+    if (result) free(result); //* Note that get munmap_chunk(): invalid pointer Aborted (core dumped) here" */
 
     return 0;
 }
