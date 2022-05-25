@@ -44,8 +44,6 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
  */
 
 #include <stdio.h>
-#include <string.h>
-#include <stddef.h>
 #include <stdlib.h> /* for realloc */
 
 
@@ -58,30 +56,35 @@ struct TreeNode {
 };
 
 
-/* This can be united in struct treeTraverser */
-int* result = NULL;
-int bufSize = 1; /* size of allocated <result> buffer (in ints) */
-int resSize = 0; /* number of node values put to <result> */
+struct treeTraverser {
+    int* result;
+    int bufSize; /* size of allocated <result> buffer (in ints) */
+    int resSize; /* number of node values put to <result> */
+};
 
-void traverseNode(struct TreeNode* node) {
+
+void traverseNode(struct TreeNode* node, struct treeTraverser* t) {
     if (!node) 
         return; 
         
-    if (bufSize  <= (resSize + 1)) {
-        bufSize <<= 1;
-        result = realloc(result, bufSize * sizeof(int)); /* assume always ok */
+    if (t->bufSize  <= (t->resSize + 1)) {
+        t->bufSize <<= 1;
+        t->result = realloc(t->result, t->bufSize * sizeof(int)); /* assume always ok */
     }
-    result[resSize++] = node->val;
-    traverseNode(node->left);
-    traverseNode(node->right);
+    t->result[t->resSize++] = node->val;
+    traverseNode(node->left, t);
+    traverseNode(node->right, t);
 }
+
+
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int* preorderTraversal(struct TreeNode* root, int* returnSize) {
-    traverseNode(root);
-    *returnSize = resSize;
-    return result;
+    struct treeTraverser t = {.result = NULL, .bufSize = 1, .resSize = 0};
+    traverseNode(root, &t);
+    *returnSize = t.resSize;
+    return t.result;
 }
 
 
@@ -89,7 +92,8 @@ int main() {
     int returnSize;
     int* result;
 
-#define TEST4
+
+#define TEST1
 #if defined TEST1
 /*
    1
