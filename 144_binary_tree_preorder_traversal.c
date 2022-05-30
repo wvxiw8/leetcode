@@ -8,7 +8,7 @@
  * @Featured       Learn
  * @Link           https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/928/
  
-Rotate Array
+Binary Tree Inorder Traversal
 
     Given the root of a binary tree, return the preorder traversal of its nodes' values.
 
@@ -58,14 +58,19 @@ struct TreeNode {
 
 struct treeTraverser {
     int* result;
-    char bufSize; /* size of allocated <result> buffer (in ints) */
-    char resSize; /* number of node values put to <result> */
+    int bufSize; /* size of allocated <result> buffer (in ints) */
+    int resSize; /* number of node values put to <result> */
 };
 
-
+/* This example using realloc to not to be limited to 100 nodes */
 void traverseNode(struct TreeNode* node, struct treeTraverser* t) {
     if (!node) 
-        return; 
+        return;
+
+    if (t->bufSize  <= (t->resSize + 1)) {
+        t->bufSize <<= 1;
+        t->result = realloc(t->result, t->bufSize * sizeof(int)); /* assume always ok */
+    }
     t->result[t->resSize++] = node->val;
     traverseNode(node->left, t);
     traverseNode(node->right, t);
@@ -76,7 +81,6 @@ void traverseNode(struct TreeNode* node, struct treeTraverser* t) {
  */
 int* preorderTraversal(struct TreeNode* root, int* returnSize) {
     struct treeTraverser t = {.result = NULL, .bufSize = 1, .resSize = 0};
-    t.result = malloc(100 * sizeof(int)); 
     traverseNode(root, &t);
     *returnSize = t.resSize;
     return t.result;
@@ -104,7 +108,7 @@ int main() {
     struct TreeNode n3 = {.val = 3, .left = NULL, .right = NULL};
     struct TreeNode n2 = {.val = 2, .left = &n3, .right = &n4};
     struct TreeNode root = {.val = 1, .left = NULL, .right = &n2};
-    // int exp[] = {1,0,2,3};
+    // int exp[] = {1,2,3,4,5,6,7};
 #elif defined TEST2
     struct TreeNode root = {.val = 0, .left = NULL, .right = NULL};
     result = preorderTraversal(NULL, &returnSize);
@@ -132,7 +136,7 @@ int main() {
     result = preorderTraversal(&root, &returnSize);
     printf("[returnSize]=%d\n", returnSize); for (int i = 0; i < returnSize; i++) { printf("%d ", *result++); } printf("\n");
     
-    if (result) free(result); //* Note that get munmap_chunk(): invalid pointer Aborted (core dumped) here" */
+    // if (result) free(result); //* Note that get munmap_chunk(): invalid pointer Aborted (core dumped) here" */
 
     return 0;
 }
