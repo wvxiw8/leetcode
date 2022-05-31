@@ -44,8 +44,6 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
  */
 
 #include <stdio.h>
-#include <stdlib.h> /* for realloc */
-
 
 
 /* Definition for a binary tree node. */
