@@ -79,9 +79,11 @@ class Solution {
         
         List<TreeNode> cur = new ArrayList<>(Arrays.asList(root));
         List<TreeNode> next;
+        
         do {
             List<Integer> integers = new ArrayList<>();
             next = new ArrayList<>();
+            
             for (TreeNode node : cur) {
                 integers.add(node.val);
 
@@ -90,6 +92,7 @@ class Solution {
                 if(node.right != null)
                     next.add(node.right);
             }
+            res.add(integers);
 
             cur = next;
         } while (next.size() != 0);
@@ -99,7 +102,7 @@ class Solution {
 
 
 
-    static void checkResult(List<Integer> result, List<Integer> expected) {
+    static void checkResult(List<List<Integer>> result, List<List<Integer>> expected) {
         if (result.equals(expected)) {
             System.out.println("OK");
         } else {
@@ -115,14 +118,17 @@ class Solution {
 9   20
   15  7   */
     static void Test1() {
-        TreeNode n5 = new TreeNode(5, null, null);
-        TreeNode n4 = new TreeNode(4, n5, n6);
-        TreeNode n3 = new TreeNode(3, null, null);
-        TreeNode n2 = new TreeNode(2, n3, n4);
-        TreeNode n1 = new TreeNode(n3, null, n2); // root
-        List<Integer> expected = new ArrayList<>(Arrays.asList(3,5,7,6,4,2,1));
+        TreeNode n7 = new TreeNode(7, null, null);
+        TreeNode n15 = new TreeNode(15, null, null);
+        TreeNode n20 = new TreeNode(20, n15, n7);
+        TreeNode n9 = new TreeNode(9, null, null);
+        TreeNode n3 = new TreeNode(3, n9, n20); // root
+        List<List<Integer>> expected = new ArrayList<>(); 
+        expected.add(Arrays.asList(3));  
+        expected.add(Arrays.asList(9, 20));
+        expected.add(Arrays.asList(15, 7));
         Solution solution = new Solution();
-        List<Integer> res = solution.levelOrder(n1);
+        List<List<Integer>> res = solution.levelOrder(n3);
         checkResult(res, expected);
     }
 
@@ -135,9 +141,13 @@ class Solution {
         TreeNode n4 = new TreeNode(4, n2, null);
         TreeNode n3 = new TreeNode(3, null, null);
         TreeNode n1 = new TreeNode(1, n4, n3); // root
+        List<List<Integer>> expected = new ArrayList<>(); 
+        expected.add(Arrays.asList(1));  
+        expected.add(Arrays.asList(4, 3));
+        expected.add(Arrays.asList(2));
         Solution solution = new Solution();
-        List<Integer> res = solution.levelOrder(n1);
-        checkResult(res, Arrays.asList(2,4,3,1));
+        List<List<Integer>> res = solution.levelOrder(n1);
+        checkResult(res, expected);
     }
 
 /*
@@ -148,9 +158,13 @@ class Solution {
         TreeNode n3 = new TreeNode(3, null, null);
         TreeNode n2 = new TreeNode(2, n3, null);
         TreeNode n1 = new TreeNode(1, null, n2); // root
+        List<List<Integer>> expected = new ArrayList<>(); 
+        expected.add(Arrays.asList(1));  
+        expected.add(Arrays.asList(2));
+        expected.add(Arrays.asList(3));
         Solution solution = new Solution();
-        List<Integer> res = solution.levelOrder(n1);
-        checkResult(res, Arrays.asList(3,2,1));
+        List<List<Integer>> res = solution.levelOrder(n1);
+        checkResult(res, expected);
     }
 
 /*
@@ -159,9 +173,12 @@ class Solution {
    static void Test4() {
         TreeNode n2 = new TreeNode(2, null, null);
         TreeNode n1 = new TreeNode(1, n2, null); // root
+        List<List<Integer>> expected = new ArrayList<>(); 
+        expected.add(Arrays.asList(1));  
+        expected.add(Arrays.asList(2));
         Solution solution = new Solution();
-        List<Integer> res = solution.levelOrder(n1);
-        checkResult(res, Arrays.asList(2,1));
+        List<List<Integer>> res = solution.levelOrder(n1);
+        checkResult(res, expected);
     }
 
     public static void main(String[] args) {
