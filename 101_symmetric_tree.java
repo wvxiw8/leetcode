@@ -66,9 +66,6 @@ class TreeNode {
  }
  
 
-/**
- *  Level Order traversal.
- */
 class Solution {
 
     /* #1: my solution */
@@ -158,7 +155,7 @@ static void Test1() {
          1
      2          2
  null 3     null 3   */
- static void Test2() {
+static void Test2() {
     TreeNode n7 = new TreeNode(3, null, null);
     TreeNode n5 = new TreeNode(3, null, null);
     TreeNode n3 = new TreeNode(2, null, n7);
@@ -174,7 +171,7 @@ static void Test1() {
          1
      2        2
  null  3    3   null */
- static void Test3() {
+static void Test3() {
     TreeNode n6 = new TreeNode(3, null, null);
     TreeNode n5 = new TreeNode(3, null, null);
     TreeNode n3 = new TreeNode(2, n6, null);
@@ -189,9 +186,9 @@ static void Test1() {
 /*
                9
        -42          -42
-    null  76      76    null
-      null 13   null 13   */
- static void Test4() {
+   null   76      76    null
+       null 13 null 13          */
+static void Test4() {
     TreeNode n13 = new TreeNode(13, null, null);
     TreeNode n11 = new TreeNode(13, null, null);
     TreeNode n6 = new TreeNode(76, null, n13);
@@ -204,6 +201,7 @@ static void Test1() {
     System.out.println(res);
     }
 
+    
     public static void main(String[] args) {
         Test1(); // true 
         Test2(); // false
