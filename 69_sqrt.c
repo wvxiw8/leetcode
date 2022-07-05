@@ -33,7 +33,8 @@ Constraints:
 
 #include <stdio.h>
 
-/* Not the exact binary search algorith. I didn't know it */
+#if 0
+/* Not the exact binary search algorithm. My thoughts */
 int mySqrt(int x) {
     if (x <= 0) 
         return 0;
@@ -55,6 +56,29 @@ int mySqrt(int x) {
     }
     return i;
 }
+
+#else
+/* Binary search algorithm implemented */
+int mySqrt(int x) {
+    int left = 0;
+    int right = x;
+    long mid;
+    
+    do {
+        mid = (left + right) >> 1;
+        long long t = mid * mid;
+        if (t < x)
+            left = mid + 1;
+        else if (t > x)
+            right = mid - 1;
+        else
+            return mid;
+
+    } while (left <= right);
+    
+    return (left + right) >> 1;
+}
+#endif
 
 int main(int agrc, char** argv) {
     int x;
