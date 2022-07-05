@@ -4,7 +4,7 @@
  * @Task           Intersection of Two Arrays II
  * @id             350
  * @Difficulty     Easy
- * @Tags           array
+ * @Tags           array, binary search
  * @Featured       Top interview collection
  * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/674/
 
