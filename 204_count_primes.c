@@ -3,7 +3,7 @@
  * @Title          Leetcode task
  * @Task           Count Primes
  * @id             204
- * @Difficulty     Easy
+ * @Difficulty     Medium
  * @Tags           math
  * @Featured       Top interview collection
  * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/744/
