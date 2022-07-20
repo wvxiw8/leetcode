@@ -3,7 +3,7 @@
  * @Title          Leetcode task
  * @Task           Rotate Array
  * @id             189
- * @Difficulty     Easy
+ * @Difficulty     Easy/Medium
  * @Tags           array, math
  * @Featured       Top interview collection
  * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/646/
