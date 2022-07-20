@@ -80,12 +80,21 @@ int mySqrt(int x) {
 }
 #endif
 
-int main(int agrc, char** argv) {
-    int x;
-    x = 4; printf("%d = sqrt(%d)\n",  mySqrt(x), x);
-    x = 8; printf("%d = sqrt(%d)\n",  mySqrt(x), x);
-    x = 46341; printf("%d = sqrt(%d)\n",  mySqrt(x), x);
-    x = 2147483647; printf("%d = sqrt(%d)\n",  mySqrt(x), x);
 
+int main(int agrc, char** argv) {
+    int x, exp, res;
+    int a[][2] = {
+        {4, 2},
+        {8, 2},
+        {46341, 215},
+        {2147483647, 46340},
+    };
+
+    for (int i = 0; i < sizeof(a)/sizeof(a[0]); ++i) {
+        x = a[i][0];
+        exp = a[i][1];
+        res = mySqrt(x);
+        printf("%d=sqrt(%d) exp=%d %s\n",  res, x, exp, res==exp ? "OK" : "   Fail!");
+    }
     return 0;
 }
