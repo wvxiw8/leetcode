@@ -114,7 +114,7 @@ class Solution {
         int m = l;
 
         while (l < u) {
-            m = l + ((u - l) >> 2);
+            m = l + ((u - l) >> 1);
 
             // if (u == nums.length) System.out.printf("l=[%d]=%d m=[%d]=%d u=[%d]=X\n", l, nums[l], m, nums[m], u);  else  System.out.printf("l=[%d]=%d m=[%d]=%d u=[%d]=%d\n", l, nums[l], m, nums[m], u, nums[u]);
 
