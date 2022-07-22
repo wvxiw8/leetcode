@@ -5,7 +5,8 @@
  * @id             278
  * @Difficulty     Easy
  * @Tags           binary search
- * @Link           https://leetcode.com/problems/first-bad-version/
+ * @Featured       Top interview collection
+ * @Link           https://leetcode.com/explore/featured/card/top-interview-questions-easy/96/sorting-and-searching/774/
 
 First Bad Version
 
