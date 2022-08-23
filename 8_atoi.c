@@ -3,7 +3,7 @@
  * @Title          Leetcode task
  * @Task           atoi
  * @id             8
- * @Difficulty     Easy
+ * @Difficulty     Easy/Medium
  * @Tags           strings
  * @Featured       Top interview collection
  * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/884/
