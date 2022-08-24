@@ -42,10 +42,10 @@ Constraints:
 
 #define MAX_DIGITS 10
 
-int pow10(int n) {
+int intPow10(int n) {
     if (n == 0)
         return 1;
-    return (int) (10 * pow10(n - 1));
+    return (int) (10 * intPow10(n - 1));
 }
 
 #if 1
@@ -88,7 +88,7 @@ int reverse(int x) {
     while(beg <= end) {
         int power = end - beg;
         int val = c[beg];
-        int addend = val * pow10(power);
+        int addend = val * intPow10(power);
         // printf(" beg=%d end=%d pow=%d c[%d]=%d addend=%d\n", beg, end, power, beg, c[beg], addend);
 
         if (check) {
