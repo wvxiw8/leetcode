@@ -82,9 +82,9 @@ int main() {
     for (int i = 0; i < sizeof(data)/sizeof(data[0]); ++i) {
         bool expected = (bool) (*data[i][2]-'0');
         if (isAnagram(data[i][0], data[i][1]) == expected) {
-            printf("Correct. \"%s\" and \"%s\" %s\n", data[i][0], data[i][1], expected == false ? "are NOT anagramms" : "are anagramms");
+            printf("Correct. \"%s\" and \"%s\" %s\n", data[i][0], data[i][1], expected == false ? "are NOT anagrams" : "are anagrams");
         } else {
-            printf("WRONG!   \"%s\" and \"%s\" %s\n", data[i][0], data[i][1], expected == false ? "considered anagramms, but they are NOT" :"considered NOT anagramms, but they are ARE");
+            printf("WRONG!   \"%s\" and \"%s\" %s\n", data[i][0], data[i][1], expected == false ? "considered anagrams, but they are NOT" :"considered NOT anagrams, but they are ARE");
 
         }
     }
