@@ -52,7 +52,7 @@ int intPow10(int n) {
 /* Note, that the task says I cannot use 64-bit integers */
 int reverse(int x) {
     // printf("x=%d\n", x);
-    if (x == INT_MIN) 
+    if (x == INT_MIN || x == 0) 
         return 0;
 
     char c[MAX_DIGITS];
@@ -68,8 +68,7 @@ int reverse(int x) {
         // printf(" c[%d]=%d x=%d\n", end, c[end], x);
         ++end;  
     }
-    if (end > 0)
-        --end;
+    --end;
 
 
     for (beg = 0; beg < MAX_DIGITS && c[beg] == 0 ; ++beg);
