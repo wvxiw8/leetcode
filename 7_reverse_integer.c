@@ -3,8 +3,8 @@
  * @Title          Leetcode task
  * @Task           Reverse Integer
  * @id             7
- * @Difficulty     Easy/Medium
- * @Tags           strings
+ * @Difficulty     Medium
+ * @Tags           strings, math
  * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/880/
 
 Reverse Integer

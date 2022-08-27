@@ -4,7 +4,7 @@
  * @Task           Count Primes
  * @id             204
  * @Difficulty     Medium
- * @Tags           math
+ * @Tags           math, array, number theory
  * @Featured       Top interview collection
  * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/744/
 
@@ -12,7 +12,6 @@ Count Primes
 
     Given an integer n, return the number of prime numbers that are strictly less than n.
 
- 
 
 Example 1:
 
@@ -30,7 +29,6 @@ Example 3:
     Input: n = 1
     Output: 0
 
- 
 
 Constraints:
 

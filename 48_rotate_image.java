@@ -3,8 +3,8 @@
  * @Title          Leetcode task
  * @Task           Rotate Image
  * @id             48
- * @Difficulty     Easy/Medium
- * @Tags           array
+ * @Difficulty     Medium
+ * @Tags           array, math, matrix
  * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/770/
  
 Rotate Image

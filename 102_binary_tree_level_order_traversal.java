@@ -12,7 +12,7 @@ import java.util.Arrays;
  * @Tags           tree, binary tree
  * @Featured       Learn
  * @Link           https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/931/
- 
+
 Binary Tree Level Order Traversal
 
     Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
@@ -38,7 +38,6 @@ Example 3:
     Input: root = []
     Output: []
 
- 
 
 Constraints:
 
