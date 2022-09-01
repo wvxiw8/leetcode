@@ -37,65 +37,8 @@ Constraints:
 */
 
 import java.util.Arrays;
-// 3 31 2 8
+
 class Solution {
-    public int maxProfit4(int[] prices) {
-        int buy = prices[0], max_profit = 0;
-        for (int i = 1; i < prices.length; i++) {
-     
-            // Checking for lower buy value
-            if (buy > prices[i])
-                buy = prices[i];
-     
-            // Checking for higher profit
-            else if (prices[i] - buy > max_profit)
-                max_profit = prices[i] - buy;
-        }
-        return max_profit;
-    }
-
-    public int maxProfit5(int[] prices) {
-        final int MAX_LEN = 100000;
-        int[] sorted = new int[prices.length];
-        int[] pos = new int [MAX_LEN];
-        int[] posMax = new int [MAX_LEN];
-        Arrays.fill(pos, -1);
-
-        sorted = prices.clone();
-        Arrays.sort(sorted);
-
-        for (int i = 0; i < prices.length; i++) {
-            if (pos[prices[i]] == -1) {
-                pos[prices[i]] = i;
-                posMax[prices[i]] = i;
-            } else {
-                posMax[prices[i]] = i;
-            }
-
-        }
-        System.out.println(Arrays.toString(prices));
-        System.out.println(Arrays.toString(sorted));
-        // System.out.println(Arrays.toString(pos));
-
-        int end = sorted.length - 1;
-        for (int i = 0; i < sorted.length/7; i++) {
-            
-            if (pos[sorted[i]] < posMax[sorted[end-i]]) {
-                System.out.printf( "1: %d %d\n", sorted[end-i], sorted[i]);
-                return sorted[end-i] - sorted[i];
-                
-            }else if (pos[sorted[i+1]] < posMax[sorted[end-i]]) {
-                System.out.printf( "2: %d %d\n", sorted[end-i], sorted[i+1]);
-                return sorted[end-i] - sorted[i+1];
-
-            } else if (pos[sorted[i]] < posMax[sorted[end-i-1]]) {
-                System.out.printf( "3: %d %d\n", sorted[end-i-1], sorted[i]);
-                return sorted[end-i-1] - sorted[i];
-            }
-        }
-        return 0;
-    }
-
     public int maxProfit(int[] prices) {
         int min = prices[0];
         int maxprof = 0;
@@ -106,59 +49,6 @@ class Solution {
             maxprof = prof > maxprof ? prof : maxprof;
         }
         return maxprof;
-    }
-
-    public int maxProfit1(int[] prices) {
-        int min = 0; /* index of min */
-        int max = prices.length-1; /* index of max */
-        int l = min; /* left scan index */
-        int r = max; /* right scan index */
-        int minVal = prices[min];
-        int maxVal = prices[max];
-        int q = 7;
-        int quit;
-
-        while (r > min || l < max) {
-            System.out.printf(" %d-%d  %d-%d   %d-%d  %d-%d\n", min, prices[min], l, prices[l], r, prices[r], max, prices[max]);
-
-            if (prices[l] < minVal) {
-                System.out.printf("  %d now min\n", prices[l]);
-                min = l;
-                minVal = prices[min];
-            } else 
-                System.out.printf("  %d skipped for min\n", prices[l]);
-
-
-            if (prices[r] > maxVal) {
-                System.out.printf("  %d now max\n", prices[r]);
-                max = r;
-                maxVal = prices[max];
-            } else 
-                System.out.printf("  %d skipped for max\n", prices[r]);
-
-            quit = 2;
-            if (r > min)
-                --r;
-            else 
-                --quit;
-
-                
-            if (l < r) 
-                ++l;
-            else 
-                --quit;
-
-                
-            if (quit == 0) break;
-
-            System.out.printf("\n");
-            if (q-- == 0) { System.out.printf("emegrency exiting\n"); break; }
-            
-            // System.out.printf(" :[%d]%d [%d]%d [%d]%d [%d]%d\n\n", min, prices[min], l, prices[l], r, prices[r], max, prices[max]);
-
-        }
-
-        return maxVal-minVal >= 0 ? maxVal-minVal : 0;
     }
 
     public static void main(String[] args) {
