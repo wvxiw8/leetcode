@@ -67,7 +67,6 @@ class Solution {
                     prof = 0;
                     min = curr;
                     System.out.printf(" Sell\n");
-                    // System.out.printf(" ! min=%d curr=%d next=%d prof=%d\n", min, curr, next, prof);
                 }
             }
         }
