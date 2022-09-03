@@ -4,7 +4,7 @@
  * @Task           Reverse Linked List
  * @id             206
  * @Difficulty     Easy
- * @Tags           linked list
+ * @Tags           linked list, recursion
  * @Featured       Top interview collection
  * @Link           https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/560/
 
@@ -104,7 +104,7 @@ class Solution {
 
         while (node != null) {
             ++size;
-            node = node.next; // Yeah, no getter given for ListNode.next
+            node = node.next;
         } 
 
         int[] a = new int[size];
@@ -129,20 +129,28 @@ class Solution {
         
         return reversed;
     }
-}
 
+    public ListNode reverseList2(ListNode head) {
+        ListNode prev = null;
+        while (head != null) {
+            ListNode tmp = head.next;
+            head.next = prev;
+            prev = head;
+            head = tmp;
+        }
+        return prev;
+    }
 
-class ReverseLinkedList {
     public static void main(String[] args) {
         int[] in = {2,3,4,5,6}; int[] out = {6,5,4,3,2};
         // int[] in = {1,2}; int[] out = {2,1};
         // int[] in = {}; int[] out = {};
         
-        Solution solution = new Solution();
+        Solution s = new Solution();
         
         ListNode list = new ListNode(in);
         list.dump();
-        ListNode reversed = solution.reverseList(list);
+        ListNode reversed = s.reverseList2(list);
         if (reversed != null) {
             reversed.dump();
         }
