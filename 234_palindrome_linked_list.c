@@ -78,6 +78,8 @@ void deleteNode(struct ListNode* node) {
     }
 }
 
+#if 0
+/* Naive solution */
 bool isPalindrome(struct ListNode* head) {
     char a[100000];
     char* e = a;
@@ -96,13 +98,62 @@ bool isPalindrome(struct ListNode* head) {
     }
     return 1;
 }
+#else 
+struct ListNode* reverseList(struct ListNode* head) {
+    struct ListNode* prev = NULL; /* prev - the previous in the current list, the next in the furure list */
+    struct ListNode* curr = head;
+    while (curr) {
+        struct ListNode* tmp = curr->next; 
+        curr->next = prev;
+        prev = curr;
+        curr = tmp;
+    }
+    return prev;
+}
+
+/* Solution with using 2 pointers */
+bool isPalindrome(struct ListNode* head) {
+
+    /* Use two pointers to find the middle/middle+1 and also calculate the size of the list*/
+    struct ListNode* fast = head;
+    struct ListNode* slow = head;
+    int size = 0;
+    while (fast && fast->next) {
+        fast = fast->next->next;
+        slow = slow->next;
+        size += 2;
+    }
+    if (fast)
+        ++size;
+
+    /* Reverse a higher half of the list */
+    struct ListNode* half = reverseList(slow);
+
+    /* Compare */
+    int lim = size / 2;
+    for (int i = 0; i < lim; ++i) {
+        if (head->val != half->val) 
+            return 0;
+        head = head->next;
+        half = half->next;
+    }
+    return 1;
+}
+#endif
 
 
 int main() {
-    int data [] = {1,2,2,1}; int is = 1;
+    // int data [] = {1,1}; int is = 1;
     // int data [] = {1,2}; int is = 0;
+    // int data [] = {1,2,2,1}; int is = 1;
+    // int data [] = {1,2,4,7}; int is = 0;
+    // int data [] = {1,2,3,2,1}; int is = 1;
+    // int data [] = {1,2,3,4,5,6}; int is = 0;
+    // int data [] = {1,2,3,4,5,6,7}; int is = 0;
+    int data [] = {1,2,3,4,3,2,1}; int is = 1;
     struct ListNode* head = createList(data, sizeof(data)/sizeof(data[0]));
     printList(head);
+
     if (is == isPalindrome(head)) {
         printf("OK\n");
     } else {
