@@ -4,7 +4,7 @@
  * @Task           Palindrome Number
  * @id             9
  * @Difficulty     Easy
- * @Tags           other
+ * @Tags           math
  * @Link           https://leetcode.com/problems/palindrome-number/
 
 Palindrome Number
