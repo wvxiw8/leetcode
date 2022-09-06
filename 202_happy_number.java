@@ -7,7 +7,9 @@
  * @Tags           hash table, math
  * @Link           https://leetcode.com/problems/happy-number/
 
- Write an algorithm to determine if a number n is happy.
+ Happy Number
+
+    Write an algorithm to determine if a number n is happy.
 
     A happy number is a number defined by the following process:
 
@@ -18,23 +20,22 @@
     Return true if n is a happy number, and false if not.
 
 
-
 Example 1:
 
     Input: n = 19
     Output: true
     Explanation:
-    12 + 92 = 82
-    82 + 22 = 68
-    62 + 82 = 100
-    12 + 02 + 02 = 1
+    1^2 + 9^2 = 82
+    8^2 + 2^2 = 68
+    6^2 + 8^2 = 100
+    1^2 + 0^2 + 0^2 = 1
+
 
 Example 2:
 
     Input: n = 2
     Output: false
 
- 
 
 Constraints:
 
@@ -55,6 +56,7 @@ class Solution {
                 i /= 10;
                 n += rem * rem;
             }
+            // System.out.println(n);
             if (!set.add(n)) 
                 return false;
         }
