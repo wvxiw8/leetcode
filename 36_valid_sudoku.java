@@ -63,7 +63,7 @@ import java.util.Arrays;
 class Solution {
     public boolean isValidSudoku(char[][] board) {
         int [] a = new int [9];
-        /* t - type of scan: 0-row, 1-column, 2-ub-box */
+        /* t - type of scan: 0-row, 1-column, 2-sub-box */
         for (int t = 0; t < 3; ++t) {
 
             for (int r = 0; r < 9; ++r) {
