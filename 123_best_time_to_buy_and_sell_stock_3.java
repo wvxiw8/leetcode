@@ -9,7 +9,7 @@
 
 Best Time to Buy and Sell Stock III
 
- You are given an array prices where prices[i] is the price of a given stock on the ith day.
+    You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
     Find the maximum profit you can achieve. You may complete at most two transactions.
 
@@ -54,7 +54,7 @@ class ProfitIterativeCalculator {
     private int extrem; /* min for froward / max for backward scanning */ 
     private boolean forward; 
     private int[] prices;
-    
+
     public ProfitIterativeCalculator(int[] prices, boolean forward) {
         this.forward = forward; 
         this.prices = prices; 
@@ -82,12 +82,30 @@ class ProfitIterativeCalculator {
 
 class Solution {
 
+    /* Somebody's elegant solution */
+    public int maxProfit2(int[] prices) {
+        int min1 = Integer.MAX_VALUE;
+        int maxProfit1 = 0;
+        int min2 = Integer.MAX_VALUE;
+        int maxProfit2 = 0;
+        
+        // loop to check whether the ith element in prices is smaller than min or not if true then update min with the prices[i] element and find max profit using Math.max function
+        for(int i=0; i<=prices.length-1; i++){
+            min1 = Math.min(prices[i], min1);
+            maxProfit1 = Math.max(maxProfit1, prices[i]-min1);
+            min2 = Math.min(min2, prices[i]-maxProfit1);
+            maxProfit2 = Math.max(maxProfit2, prices[i]-min2);
+            System.out.printf("min1=%d prof1=%d min2=%d prof2=%d\n", min1, maxProfit1, min2, maxProfit2);
+        }
+        return maxProfit2;
+    }
+
+    /* My solution */
     public int maxProfit(int[] prices) {
         int max = 0;
         int[][] a = new int[2][prices.length];
         ProfitIterativeCalculator forwarder = new ProfitIterativeCalculator(prices, true);
         ProfitIterativeCalculator backwarder = new ProfitIterativeCalculator(prices, false);
-
 
         for (int i = 0; i < prices.length; ++i) {
             a[0][i] = forwarder.step();
