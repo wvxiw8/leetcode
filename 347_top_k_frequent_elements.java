@@ -37,9 +37,11 @@ Follow up: Your algorithm's time complexity must be better than O(n log n), wher
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 class Solution {
-    public int[] topKFrequent(int[] nums, int k) {
+    // Using hash table
+    public int[] topKFrequent1(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int key: nums) {
             Integer quantity = map.get(key);
@@ -58,12 +60,42 @@ class Solution {
         return result;
     }
 
+    // Using heap (priority queue)
+    public int[] topKFrequent2(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int key: nums) {
+            Integer quantity = map.get(key);
+            if (quantity == null)
+                quantity = 0;
+            map.put(key, quantity+1);
+        }
+
+        PriorityQueue<Map.Entry<Integer, Integer>> heap = new PriorityQueue<>(map.size(), (e1,  e2 ) -> e2.getValue() - e1.getValue());
+        for (Map.Entry<Integer, Integer> entry: map.entrySet()) {
+            heap.add(entry);
+        }
+
+        int[] result = new int[k];
+        for (int i = 0; i < k; i++) {
+            Map.Entry<Integer, Integer> entry = heap.poll();
+            result[i] = entry.getKey();
+        }
+        return result;
+    }
+
+
+    public int[] topKFrequent(int[] nums, int k) {
+//        return topKFrequent1(nums, k); // Using hash table
+        return topKFrequent2(nums, k); // Using heap (priority queue)
+    }
+
 
     public static void main(String[] args) {
         /* {{nums}, {k}, {output/expected}} */
         int [][][] data = {
                 {{1,1,1,2,2,3}, {2}, {1,2}},
                 {{1}, {1}, {1}},
+                {{-1,-1}, {1}, {-1}}
         };
 
         Solution solution = new Solution();
