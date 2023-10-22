@@ -1,4 +1,4 @@
-/** 
+/**
  * @Author         wvxiw
  * @Title          Leetcode task
  * @Task           LRU Cache
@@ -56,7 +56,8 @@ import java.util.function.BiConsumer;
  * int param_1 = obj.get(key);
  * obj.put(key,value);
  */
-class LRUCache extends LRUCacheAging {
+
+class LRUCache extends LRUCache1 {
 
     public LRUCache(int capacity) {
         super(capacity);
@@ -73,6 +74,18 @@ class LRUCache extends LRUCacheAging {
         }
     }
     public static void main(String[] args) {
+//        LRUCache lRUCache = new LRUCache(2);
+//        lRUCache.put(1, 1); // cache is {1=1}
+//        lRUCache.put(2, 2); // cache is {1=1, 2=2}
+//        lRUCache.get(1);    // return 1
+//        lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+//        lRUCache.get(2);    // returns -1 (not found)
+//        lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+//        lRUCache.get(1);    // return -1 (not found)
+//        lRUCache.get(3);    // return 3
+//        lRUCache.get(4);    // return 4
+        if (false)
+            return;
         TestData[] testDataArray = new TestData[]{
                 new TestData(
                         new String[] {"LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"},
@@ -84,11 +97,15 @@ class LRUCache extends LRUCacheAging {
                         new Integer[][] {{1}, {2,1}, {2}, {3,2}, {2}, {3}},
                         new Integer[] {null, null, 1, null, -1, 2}
                 ),
-
+                new TestData(
+                        new String[] {"LRUCache","get","put","get","put","put","get","get"},
+                        new Integer[][] {{2},{2},{2,6},{1},{1,5},{1,2},{1},{2}},
+                        new Integer[] {null,-1,null,-1,null,null,2,6}
+                ),
         };
 
         for (TestData t :testDataArray) {
-            LRUCache lRUCache = new LRUCache(t.data[0][0]); // The "LRUCache" command
+            LRUCache cache = new LRUCache(t.data[0][0]); // The "LRUCache" command
             for (int i = 0; i < t.command.length ; i++) {
                 String command = t.command[i];
                 Integer[] data = t.data[i];
@@ -100,31 +117,95 @@ class LRUCache extends LRUCacheAging {
                         System.out.println();
                         break;
                     case "put":
-                        lRUCache.put(data[0], data[1]);
+                        cache.put(data[0], data[1]);
                         System.out.println();
                         break;
                     case "get":
-                        result = lRUCache.get(data[0]);
+                        result = cache.get(data[0]);
                         if (result == exp)
-                            System.out.println(" OK");
+                            System.out.println("     OK: " + result.toString());
                         else
-                            System.out.printf(" FAILED result=%d exp=%d\n", result, exp);
+                            System.out.printf("     FAILED: result=%d exp=%d\n", result, exp);
                         break;
                 }
             }
+            System.out.println();
+        }
+    }
+}
+/** LRU cache that uses a doubly-linked list to age elements.
+ *
+ * This implementation is even slower, than the LRUCache2 with storing aging in int.
+ * I got "Time Limit Exceeded" error on the leetcode on the test with capacity=1101.
+ * This is because of removing a node from the LinkedList takes O(n) */
+class LRUCache1 {
+    private final int CAPACITY;
+    private Map <Integer, Integer> map;
+    private LinkedList<Integer> list;
+
+    public LRUCache1(int capacity) {
+        CAPACITY = capacity;
+        map = new HashMap<>((int) (CAPACITY * 1.5));
+        list = new LinkedList<>();
+    }
+    public int get(int key) {
+        Integer value = map.get(key);
+        if (value == null) {
+            return -1;
+        } else {
+            updatePriority(key);
+            return value;
+        }
+    }
+    public void put(int key, int value) {
+        if (map.size() >= CAPACITY) {
+            if (!map.containsKey(key)) {
+                Integer removedKey = list.poll();
+                map.remove(removedKey);
+                list.add(key);
+            } else {
+                updatePriority(key);
+            }
+            map.put(key, value);
+        } else {
+            Integer previous = map.put(key,value);
+            if (previous == null)
+                list.add(key);
+            else
+                updatePriority(key);
+        }
+    }
+    private void updatePriority(int key) {
+        Integer element = null;
+        int i = 0;
+
+        // Yeah, sadly still have O(n) for updating a key
+        for (; i < list.size(); i++) {
+            Integer integer = list.get(i);
+            if (integer.intValue() == key) {
+                element = integer;
+                break;
+            }
+        }
+
+        if (element != null) {
+            list.remove(i);
+            list.add(element);
         }
     }
 }
 
-/** This implementation suites only for small amount of data.
+/** LRU cache that uses an int value to store age.
+ *
+ * This implementation suites only for small amount of data.
  * "Time Limit Exceeded" faced on a test with capacity=3000.
  * Need to use DoubleLinkedList instead of "aging" every element in map*/
-class LRUCacheAging {
-    final int CAPACITY;
-    Map <Integer, Integer[]> map; // key, [value, age]
-    Integer oldestKey;
+class LRUCache2 {
+    private final int CAPACITY;
+    private Map <Integer, Integer[]> map; // key, [value, age]
+    private  Integer oldestKey;
     private Ager ager = new Ager();
-    public LRUCacheAging(int capacity) {
+    public LRUCache2(int capacity) {
         CAPACITY = capacity;
         map = new HashMap<>((int) (CAPACITY * 1.5));
     }
