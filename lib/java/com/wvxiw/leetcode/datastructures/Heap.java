@@ -1,7 +1,7 @@
 /**
- * @Author         wvxiw
- * @Title          A heap data structure implementation for leetcode
-*/
+ * @Author  wvxiw
+ * @Title   The heap data structure implementation for leetcode
+ */
 package com.wvxiw.leetcode.datastructures;
 
 public class Heap {
@@ -36,9 +36,11 @@ public class Heap {
         return h;
     }
     public void build(int[] a) {
-        h = buildWilliams(a);
+//        h = buildWilliams(a);
+        h = buildFloyd(a);
         size = h.length;
     }
+
     /**
      * Williams' method of building heap.
      * https://en.wikipedia.org/wiki/Binary_heap#Building_a_heap
@@ -59,6 +61,18 @@ public class Heap {
             }
         }
         return b;
+    }
+
+    /**
+     * Floyd's method of building heap (faster).
+     * https://en.wikipedia.org/wiki/Heapsort#Floyd's_heap_construction
+     */
+    // todo this method is not working with #912
+    private int[] buildFloyd(int[] a) {
+        for (int i = a.length/2; i >= 0 ; i--)
+//        for (int i = 0; i < (a.length/4) *3; i++)
+            heapify(i);
+        return a;
     }
 
     /** Restore heap property at i-th node */
