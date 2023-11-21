@@ -33,18 +33,27 @@ Follow-up: Could you solve it in O(n log(k)) time and O(n) extra space?
  @formatter:on
  */
 
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-// todo 1. implement and solve using the trie data structure
-// todo 2. solve using priority queue
+// todo Implement and solve using the trie data structure
 class Solution {
+    final Comparator<Map.Entry<String, Integer>> comparator = (e1, e2) -> {
+        int numComp = e2.getValue().compareTo(e1.getValue());
+        if (numComp == 0)
+            return e1.getKey().compareTo(e2.getKey());
+        else
+            return numComp;
+    };
+
     public List<String> topKFrequent(String[] words, int k) {
+//        return topKFrequent1(words, k); // hashmap + streams
+        return topKFrequent2(words, k); // hashmap + priority queue
+    }
+
+    // hashmap + streams
+    public List<String> topKFrequent1(String[] words, int k) {
         HashMap<String, Integer> map = new HashMap<>();
         for (String w : words) {
             Integer num = map.get(w);
@@ -54,17 +63,32 @@ class Solution {
         }
 
         List<String> result = map.entrySet().stream()
-                .sorted((s1, s2) -> {
-                    int numComp = s2.getValue().compareTo(s1.getValue());
-                    if (numComp == 0)
-                        return s1.getKey().compareTo(s2.getKey());
-                    else
-                        return numComp;
-                })
+                .sorted(comparator)
                 .map(Map.Entry::getKey)
                 .limit(k)
                 .collect(Collectors.toList());
 
+        return result;
+    }
+
+    public List<String> topKFrequent2(String[] words, int k) {
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String w : words) {
+            Integer num = map.get(w);
+            if (num == null)
+                num = 0;
+            map.put(w, num + 1);
+        }
+
+        PriorityQueue<Map.Entry<String, Integer>> queue = new PriorityQueue<>(words.length, comparator);
+        for (Map.Entry<String, Integer> e : map.entrySet()) {
+            queue.add(e);
+        }
+
+        List<String> result = new ArrayList<>(k);
+        for (int i = 0; i < k; i++) {
+            result.add(queue.poll().getKey());
+        }
         return result;
     }
 
@@ -88,7 +112,7 @@ class Solution {
 
         Solution s = new Solution();
         for (TestData t : testData) {
-            List<String> result = s.topKFrequent(t.words, t.k);
+            List<String> result = s.topKFrequent2(t.words, t.k);
             if (Arrays.equals(result.toArray(), t.expected)) {
                 System.out.println("OK");
             } else {
