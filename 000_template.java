@@ -1,4 +1,5 @@
 /**
+ * @formatter:off
  * @Author         wvxiw
  * @Title          Leetcode task
  * @Task           ---
@@ -32,6 +33,7 @@ Constraints:
 
 Follow up: ---
 
+ * @formatter:on
 */
 
 
