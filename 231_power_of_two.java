@@ -1,12 +1,12 @@
 /**
  * @formatter:off
- * @Author wvxiw
- * @Title Leetcode task
- * @Task Power of Two
- * @id 231
- * @Difficulty Easy
- * @Tags math, bit manipulation, recursion
- * @Link https://leetcode.com/problems/power-of-two/
+ * @Author          wvxiw
+ * @Title           Leetcode task
+ * @Task            Power of Two
+ * @id              231
+ * @Difficulty      Easy
+ * @Tags            math, bit manipulation, recursion
+ * @Link            https://leetcode.com/problems/power-of-two/
 
 Power of Two
     Given an integer n, return true if it is a power of two. Otherwise, return false.
@@ -28,6 +28,7 @@ Constraints:
 -2^31 <= n <= 2^31 - 1
 
 Follow up: Could you solve it without loops/recursion?
+ * @formatter:on
  */
 
 
