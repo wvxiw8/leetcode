@@ -16,7 +16,7 @@ func NewListNode(data []int) *ListNode {
 	return node
 }
 
-func ListToArray(head *ListNode) []int {
+func ListToSlice(head *ListNode) []int {
 	if head == nil {
 		return []int{}
 	}
