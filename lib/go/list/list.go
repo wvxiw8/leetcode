@@ -6,7 +6,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func NewList(data []int) *ListNode {
+func NewListNode(data []int) *ListNode {
 	var node *ListNode = nil
 	var next *ListNode = nil
 	for i := len(data) - 1; i >= 0; i-- {
