@@ -1,5 +1,5 @@
 
-package array
+package slice
 
 func CompareEqual(a []int, b []int) bool {
 	if len(a) != len(b) {

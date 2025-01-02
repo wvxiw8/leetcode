@@ -36,62 +36,15 @@ package main
 
 import (
 	"fmt"
-)
 
-// Definition for singly-linked list.
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+	. "github.com/wvxiw8/leetcode/lib/go/list"
+	. "github.com/wvxiw8/leetcode/lib/go/slice"
+)
 
 type testData struct {
 	input  []int
 	val    int
 	output []int
-}
-
-func createList(data []int) *ListNode {
-	var node *ListNode = nil
-	var next *ListNode = nil
-	for i := len(data) - 1; i >= 0; i-- {
-		node = &ListNode{data[i], next}
-		next = node
-	}
-	return node
-}
-
-func listToArray(head *ListNode) []int {
-	if head == nil {
-		return []int{}
-	}
-
-	len := 0
-	n := head
-	for n != nil {
-		n = n.Next
-		len++
-	}
-
-	a := make([]int, len)
-	n = head
-	for i := range a {
-		a[i] = n.Val
-		n = n.Next
-	}
-
-	return a
-}
-
-func compareEqual(a []int, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i, v := range a {
-		if v != b[i] {
-			return false
-		}
-	}
-	return true
 }
 
 func main() {
@@ -105,10 +58,10 @@ func main() {
 
 	for _, v := range data {
 		exp := v.output
-		head := createList(v.input)
+		head := NewList(v.input)
 		newList := removeElements(head, v.val)
-		ret := listToArray(newList)
-		if compareEqual(ret, exp) {
+		ret := ListToSlice(newList)
+		if CompareEqual(ret, exp) {
 			fmt.Printf("OK   in=%v val=%v out=%v\n", v.input, v.val, ret)
 		} else {
 			fmt.Printf("FAIL in=%v val=%v out=%v exp=%v\n", v.input, v.val, ret, v.output)
