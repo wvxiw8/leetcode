@@ -6,7 +6,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func NewListNode(data []int) *ListNode {
+func NewList(data []int) *ListNode {
 	var node *ListNode = nil
 	var next *ListNode = nil
 	for i := len(data) - 1; i >= 0; i-- {
@@ -37,3 +37,4 @@ func ListToSlice(head *ListNode) []int {
 
 	return a
 }
+
