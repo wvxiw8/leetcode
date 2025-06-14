@@ -39,6 +39,7 @@ package main
 
 import (
 	"fmt"
+	"slices"
 )
 
 type testData struct {
@@ -53,7 +54,7 @@ func main() {
 	}
 	for _, v := range data {
 		exp := v.output
-		ret := maximumPopulation(v.input)
+		ret := maximumPopulation2(v.input)
 		if exp == ret {
 			fmt.Printf("OK    %v->%v\n", v.input, ret)
 		} else {
@@ -63,7 +64,7 @@ func main() {
 	fmt.Println()
 }
 
-// Direct solution
+// 1. Direct solution
 func maximumPopulation(logs [][]int) int {
 	const size = 2050 - 1950
 	offset := 1950
@@ -89,4 +90,36 @@ func maximumPopulation(logs [][]int) int {
 	}
 
 	return maxIndex + offset
+}
+
+// 2. Efficient solution using line sweep algorithm
+func maximumPopulation2(logs [][]int) int {
+	m := make(map[int]int) // year[population]
+
+	// Put chagning years to a map
+	for _, span := range logs {
+		m[span[0]]++ // Birth in span[0] year
+		m[span[1]]-- // Death in span[1] year
+	}
+
+	// Sort the years
+	years := make([]int, 0, len(m))
+	for y := range m {
+		years = append(years, y)
+	}
+	slices.Sort(years)
+
+	// Walk the map in order(i.e. sweep the line) and find max
+	pop, maxPop, yearMaxPop := 0, 0, 0
+	//fmt.Println("\nYear | Diff | Population")
+	for _, y := range years {
+		pop += m[y]
+		//fmt.Printf("%4d    %+d        %d\n", y, m[y], pop)
+		if pop > maxPop {
+			maxPop = pop
+			yearMaxPop = y
+		}
+	}
+
+	return yearMaxPop
 }
