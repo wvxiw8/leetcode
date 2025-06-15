@@ -54,7 +54,7 @@ func main() {
 	}
 	for _, v := range data {
 		exp := v.output
-		ret := maximumPopulation2(v.input)
+		ret := maximumPopulation3(v.input)
 		if exp == ret {
 			fmt.Printf("OK    %v->%v\n", v.input, ret)
 		} else {
@@ -65,8 +65,8 @@ func main() {
 }
 
 // 1. Direct solution
-func maximumPopulation(logs [][]int) int {
-	const size = 2050 - 1950
+func maximumPopulation1(logs [][]int) int {
+	const size = 2050 - 1950 + 1
 	offset := 1950
 	n := [size]int{}
 
@@ -118,6 +118,31 @@ func maximumPopulation2(logs [][]int) int {
 		if pop > maxPop {
 			maxPop = pop
 			yearMaxPop = y
+		}
+	}
+
+	return yearMaxPop
+}
+
+// 3. Efficient solution using prefix sum algorithm
+func maximumPopulation3(logs [][]int) int {
+	const size = 2050 - 1950 + 1
+	offset := 1950
+	n := [size]int{}
+
+	for _, span := range logs {
+		n[span[0]-offset]++ // Birth in span[0] year
+		n[span[1]-offset]-- // Death in span[1] year
+	}
+
+	pop, maxPop, yearMaxPop := 0, 0, 0
+	//fmt.Println("\nFor ", logs, "\nYear | Diff | Population")
+	for i := range n {
+		pop += n[i] // `pop` is a prefix sum, but we do not store it for every value of the input array, just use do determine max value
+		//fmt.Printf("%4d    %+d        %d\n", i+offset, n[i], pop)
+		if pop > maxPop {
+			maxPop = pop
+			yearMaxPop = i + offset
 		}
 	}
 
