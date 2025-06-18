@@ -151,11 +151,10 @@ func (this *MyCalendarTwo) Book(startTime int, endTime int) bool {
 	this.m[endTime]--
 
 	// Deep copy the slice with keys if going to add new values there (or we need manually search the value in the slice and remove them)
+	// UPD: Deep copy always. There can be a case when keys exist, but booking will be declined
 	var backup []int
-	if !begExisted || !endExisted {
-		backup = make([]int, len(this.keys))
-		copy(backup, this.keys)
-	}
+	backup = make([]int, len(this.keys))
+	copy(backup, this.keys)
 
 	// Add keys if new
 	if !begExisted {
