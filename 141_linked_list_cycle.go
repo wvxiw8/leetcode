@@ -74,7 +74,7 @@ func main() {
 		arr := v.data
 		pos := v.pos
 
-		head := NewListCycled(arr, pos)
+		head, _ := NewListCycled(arr, pos)
 		head.PrintNoCycle(len(arr) + 3)
 		ret := hasCycle(head)
 		exp := pos != -1

@@ -41,7 +41,7 @@ func ListToSlice(head *ListNode) []int {
 }
 
 // NewListCycled creates a linked list with the tail element pointing to the [cycle]. Uncycled if cycle=-1
-func NewListCycled(data []int, cycle int) *ListNode {
+func NewListCycled(data []int, cycle int) (head *ListNode, cycleBegins *ListNode) {
 	var node *ListNode = nil
 	var next *ListNode = nil
 	var cycling *ListNode = nil
@@ -58,8 +58,12 @@ func NewListCycled(data []int, cycle int) *ListNode {
 	}
 	if cycle != -1 {
 		last.Next = cycling
+		cycleBegins = cycling
+	} else {
+		cycleBegins = nil
 	}
-	return node
+	head = node
+	return
 }
 
 func (l *ListNode) Print(max int) {
