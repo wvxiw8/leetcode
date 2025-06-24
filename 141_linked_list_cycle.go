@@ -101,16 +101,16 @@ func hasCycle(head *ListNode) bool {
 		return false
 	}
 
-	slow, fast := head, head.Next
+	slow, fast := head, head // Start with same position
 
 	for fast != nil && fast.Next != nil {
-		fmt.Printf("s=%p/%v f=%p/%v\n", slow, slow.Val, fast, fast.Val)
+		// First iterate the pointers, then compare
+		fast = fast.Next.Next
+		//fmt.Printf("s=%p/%v f=%p/%v\n", slow, slow.Val, fast, fast.Val)
+		slow = slow.Next
 		if fast == slow {
 			return true
 		}
-
-		fast = fast.Next.Next
-		slow = slow.Next
 	}
 	return false
 }
